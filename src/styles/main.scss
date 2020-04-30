@@ -10,6 +10,7 @@ body {
   flex: 1 0 700px;
   flex-wrap: wrap;
   div {
+    transition: all 0.5s;
     box-sizing: border-box;
     text-align: center;
     background: #eee;
@@ -20,11 +21,10 @@ body {
     font-family: Arial, sans-serif;
     font-size: 30px;
     line-height: 100px;
+    position: relative;
   }
 
   div:hover {
-    transition: all 0.5s ease;
-    position: relative;
     bottom: 20px;
     background-color: pink;
     cursor: pointer;
