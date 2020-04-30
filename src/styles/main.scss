@@ -21,11 +21,11 @@ body {
     font-family: Arial, sans-serif;
     font-size: 30px;
     line-height: 100px;
-    position: relative;
+    display: block;
   }
 
   div:hover {
-    bottom: 20px;
+    transform: translate(0, -30px);
     background-color: pink;
     cursor: pointer;
   }
