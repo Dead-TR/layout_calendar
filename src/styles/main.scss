@@ -9,16 +9,19 @@ body {
   display: flex;
   flex: 1 0 700px;
   flex-wrap: wrap;
+
   div {
-    transition: all 0.5s;
-    box-sizing: border-box;
-    text-align: center;
+    transition: transform 0.5s,
+      background-color 0.5s;
     background: #eee;
     border: solid 1px black;
+    box-sizing: border-box;
+    margin: 0 0 1px 1px;
     width: 100px;
     height: 100px;
-    margin: 0 0 1px 1px;
+
     font-family: Arial, sans-serif;
+    text-align: center;
     font-size: 30px;
     line-height: 100px;
   }
@@ -30,28 +33,19 @@ body {
   }
 }
 
-.calendar-tue :first-child {
-  margin-left: 102px;
-}
+$day-map: (
+  tue:1,
+  wed:2,
+  thu:3,
+  fri:4,
+  sat:5,
+  sun:6,
+);
 
-.calendar-wed :first-child {
-  margin-left: 203px;
-}
-
-.calendar-thu :first-child {
-  margin-left: 304px;
-}
-
-.calendar-fri :first-child {
-  margin-left: 405px;
-}
-
-.calendar-sat :first-child {
-  margin-left: 506px;
-}
-
-.calendar-sun :first-child {
-  margin-left: 607px;
+@each $day, $number in $day-map {
+  .calendar-#{$day} :first-child {
+    margin-left: #{101*$number}px;
+  }
 }
 
 @for $i from 1 to 32 {
@@ -60,11 +54,8 @@ body {
   }
 }
 
-.calendar-30 :nth-child(31),
-.calendar-29 :nth-child(31),
-.calendar-29 :nth-child(30),
-.calendar-28 :nth-child(31),
-.calendar-28 :nth-child(30),
-.calendar-28 :nth-child(29) {
-  visibility: hidden;
+@for $i from 28 to 31 {
+  .calendar-#{$i} :nth-child(n+#{1+$i}) {
+    visibility: hidden;
+  }
 }
